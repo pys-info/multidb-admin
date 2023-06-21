@@ -22,3 +22,12 @@ class MultiDBRouter:
 
     def db_for_write(self, model, **hints):
         return self.get_db(model)
+
+    def allow_relation(self, *args, **kwargs):
+        return True
+
+    def allow_syncdb(self, *args, **kwargs):
+        return True
+
+    def allow_migrate(self, *args, **kwargs):
+        return True
