@@ -1,6 +1,4 @@
-from django.contrib.admin.models import LogEntry
 from django.contrib.auth import get_user_model
-
 
 User = get_user_model()
 
@@ -10,9 +8,7 @@ class MultiDBRouter:
 
     def get_db(self, model, **kwargs):
         if hasattr(self, "request"):
-            if (
-                model.__name__ not in self.keep_models_in_default
-            ):
+            if model.__name__ not in self.keep_models_in_default:
                 return self.request.session.get("DB", "default")
 
         return "default"

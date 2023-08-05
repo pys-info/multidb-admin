@@ -1,11 +1,10 @@
 from django import forms
+from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin.forms import AdminAuthenticationForm
-from django.conf import settings
 
 
 class MultiDBAdminForm(AdminAuthenticationForm):
-
     database = forms.ChoiceField(choices=[], required=True)
 
     def __init__(self, **kwargs):
@@ -14,4 +13,3 @@ class MultiDBAdminForm(AdminAuthenticationForm):
 
 
 admin.site.login_form = MultiDBAdminForm
-
